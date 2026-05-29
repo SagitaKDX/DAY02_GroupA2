@@ -18,10 +18,11 @@
 
 | Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
 |---|---|---|---|
-| 1 | Tổng hợp và sắp xếp thời gian | Workflow rõ, mất nhiều thời gian, có metric tốt về phần TSC(Task success  rate), metrics của voice | Thế nào là một sản phẩm có UX đủ tốt và có security đủ tốt |
-| 2 | Tìm kiếm lại các bài DSA tương đồng scope to hơn là tìm các code được note lại | Có pain thật, AI có thể giúp đọc/tóm tắt tổng hợp và dễ dàng lưu lại , truy xuất | Làm sao để hiểu được cấu trúc search code tốt hơn (mỗi loại code có syntax khác nhau) |
-| 3 | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo | Nhiều người đau, impact rộng | Chưa chắc về cách interact với data, . Dữ liệu review lấy từ đâu (Shopee, Lazada, web nội bộ)? Tần suất làm báo cáo là daily, weekly hay monthly? Sau khi có báo cáo thì action tiếp theo là gì? |
-## Problem Card #3 — Sentiment Analysis & Review Report
+| 1 | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo | Nhiều người đau, impact rộng | Không còn điều chưa chắc(không có nổĩ lo về risk ngoài ra vì đây dạng như gọi LLM và đã test trên tập dữ liệu trước đó rồi, ngoài ra không sợ vấn đề về spam về chính sách siết chặt của các sàng) |
+| 2 | Tổng hợp và sắp xếp thời gian | Workflow rõ, mất nhiều thời gian, có metric tốt về phần TSC(Task success  rate), metrics của voice | Thế nào là một sản phẩm có UX đủ tốt và có security đủ tốt |
+| 3 | Tìm kiếm lại các bài DSA tương đồng scope to hơn là tìm các code được note lại | Có pain thật, AI có thể giúp đọc/tóm tắt tổng hợp và dễ dàng lưu lại , truy xuất | Làm sao để hiểu được cấu trúc search code tốt hơn (mỗi loại code có syntax khác nhau) |
+
+## Problem Card #1 — Sentiment Analysis & Review Report
 
 **Problem 1 câu:**  
 Nhân viên Quality Analytics (QA) mất quá nhiều thời gian (nửa ngày) để đọc thủ công, gán nhãn hàng ngàn review 1-4 sao, khiến báo cáo chất lượng gửi Store Manager bị chậm, dễ sai sót do cảm tính và khó scale khi lượng đơn hàng tăng vọt.
@@ -58,7 +59,7 @@ Mất 3-4 tiếng/tuần cho 1 bản báo cáo. Khi có Mega Sale, QA bị "ng�
 *   Độ chính xác khi tự động gán nhãn của AI đạt trên 85% so với human.
 
 **Non-AI alternative:**  
-Chỉ dùng Rule-based (tìm kiếm keyword) + Dashboard Excel. *Hạn chế:* Bỏ sót nhiều context phức tạp, không xử lý được lỗi chính tả, không draft được narrative.
+Chỉ dùng Rule-based (tìm kiếm keyword) + Dashboard Excel. *Hạn chế:* Bỏ sót nhiều context phức tạp, không xử lý được lỗi chính tả, không draft được narrative, không hiểu được sâu về ngữ cảnh, các câu cảm thán mỉa mai(sarcasm), khó scale khi lượng order tăng đột biến.
 
 **AI hypothesis:**  
 Sử dụng **LLM Workflow kết hợp Rule-based**. Rule-based lọc rác. LLM trích xuất insight và draft narrative. QA đóng vai trò Reviewer (Human-in-the-loop).
@@ -91,3 +92,5 @@ graph TD
     classDef bottleneck fill:#ffcccc,stroke:#ff0000,stroke-width:2px;
     classDef ai fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
     classDef human fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
+
+---
