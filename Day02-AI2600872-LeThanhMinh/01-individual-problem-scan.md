@@ -93,4 +93,8 @@ graph TD
     classDef ai fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
     classDef human fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
 ```
+| Card | Actor | Bottleneck | Metric | Quick gut | Vì sao chưa chọn làm #1 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Quản lý & Sắp xếp lịch trình** | Mọi người (Sinh viên, Nhân viên) | Check thủ công nhiều nguồn (mail, task) mỗi sáng để gom deadline và tự đặt nhắc nhở | 30 - 45 phút/ngày → dưới 5 phút/ngày | Agent / Workflow | Rủi ro về bảo mật dữ liệu cá nhân (Security) và bài toán thiết kế UX chưa rõ ràng. |
+| **Tìm kiếm lại bài / code DSA** | Cả team (Dev, Học sinh/Sinh viên IT) | Khó match context bài mới với các đoạn code cũ đã lưu do đề bài bị "revise" lại | 20 - 25 phút/lần → dưới 3 phút/lần | RAG (Semantic Search) | Rào cản kỹ thuật: Khó cấu trúc và index dữ liệu code tốt do mỗi loại syntax/ngôn ngữ khác nhau. |
 
