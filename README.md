@@ -20,7 +20,7 @@
 |---|---|---|---|
 | 1 | Tổng hợp và sắp xếp thời gian | Workflow rõ, mất nhiều thời gian, có metric tốt về phần TSC(Task success  rate), metrics của voice | Thế nào là một sản phẩm có UX đủ tốt và có security đủ tốt |
 | 2 | Tìm kiếm lại các bài DSA tương đồng scope to hơn là tìm các code được note lại | Có pain thật, AI có thể giúp đọc/tóm tắt tổng hợp và dễ dàng lưu lại , truy xuất | Làm sao để hiểu được cấu trúc search code tốt hơn (mỗi loại code có syntax khác nhau) |
-| 3 | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo | Nhiều người đau, impact rộng | Không còn điều chưa chắc(không có nổĩ lo về risk ngoài ra vì đây dạng như gọi LLM và đã test trên tập dữ liệu trước đó rồi, ngoài ra không sợ vấn đề về spam về chính sách siết chặt của các sàng) |
+| 3 | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo | Nhiều người đau, impact rộng | Chưa chắc về cách interact với data, . Dữ liệu review lấy từ đâu (Shopee, Lazada, web nội bộ)? Tần suất làm báo cáo là daily, weekly hay monthly? Sau khi có báo cáo thì action tiếp theo là gì? |
 ## Problem Card #3 — Sentiment Analysis & Review Report
 
 **Problem 1 câu:**  
