@@ -92,4 +92,5 @@ graph TD
     classDef bottleneck fill:#ffcccc,stroke:#ff0000,stroke-width:2px;
     classDef ai fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
     classDef human fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
----
+```
+
