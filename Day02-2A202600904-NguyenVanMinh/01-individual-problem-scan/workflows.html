@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflow Báo Cáo Học Tập — Before & After AI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f4f8;
+    padding: 32px 20px;
+    color: #1a202c;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: 18px;
+    color: #2d3748;
+    margin-bottom: 6px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 28px;
+  }
+  .container {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .column {
+    flex: 1;
+    min-width: 300px;
+    max-width: 410px;
+  }
+  .col-header {
+    border-radius: 12px 12px 0 0;
+    padding: 14px 18px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .before .col-header { background: linear-gradient(135deg, #e53e3e, #c53030); color: white; }
+  .after .col-header { background: linear-gradient(135deg, #38a169, #276749); color: white; }
+  .col-header .time-label {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.9;
+    background: rgba(255,255,255,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .col-body {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    padding: 18px 16px;
+    border: 2px solid;
+    border-top: none;
+  }
+  .before .col-body { border-color: #e53e3e; }
+  .after .col-body { border-color: #38a169; }
+
+  .step {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 4px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .step .step-num {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 3px;
+  }
+  .step .step-title { font-weight: 600; font-size: 14px; }
+  .step .step-desc { font-size: 12px; color: #718096; margin-top: 3px; }
+  .step .step-time {
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .step.normal { background: #f7fafc; border-left: 4px solid #cbd5e0; }
+  .step.bottleneck { background: #fff5f5; border-left: 4px solid #e53e3e; }
+  .step.bottleneck .step-time { color: #c53030; }
+  .step.ai-step { background: #f0fff4; border-left: 4px solid #48bb78; }
+  .step.ai-step .step-time { color: #276749; }
+  .step.human-step { background: #ebf8ff; border-left: 4px solid #63b3ed; }
+  .step.human-step .step-time { color: #2b6cb0; }
+  .step.rule-step { background: #faf5ff; border-left: 4px solid #b794f4; }
+  .step.rule-step .step-time { color: #553c9a; }
+
+  .arrow {
+    text-align: center;
+    font-size: 20px;
+    color: #a0aec0;
+    margin: 3px 0;
+    line-height: 1;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+  .badge-bottleneck { background: #e53e3e; color: white; }
+  .badge-ai { background: #38a169; color: white; }
+  .badge-human { background: #3182ce; color: white; }
+  .badge-rule { background: #805ad5; color: white; }
+
+  .fallback {
+    margin-top: 14px;
+    padding: 10px 13px;
+    background: #fffff0;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #744210;
+    border: 1px dashed #f6ad55;
+    line-height: 1.5;
+  }
+
+  .summary {
+    margin: 24px auto 0;
+    background: white;
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .summary-item {
+    text-align: center;
+    flex: 1;
+  }
+  .summary-item .label { font-size: 12px; color: #718096; margin-bottom: 4px; }
+  .summary-item .val { font-size: 28px; font-weight: 800; line-height: 1; }
+  .summary-item .sub { font-size: 11px; color: #a0aec0; margin-top: 3px; }
+  .val.red { color: #e53e3e; }
+  .val.green { color: #38a169; }
+  .val.blue { color: #3182ce; }
+  .summary-sep { font-size: 24px; color: #cbd5e0; padding: 0 8px; }
+
+  .legend {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 16px auto 0;
+    max-width: 900px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #4a5568;
+  }
+  .legend-dot {
+    width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Workflow Báo Cáo Học Tập cho Phụ Huynh</h1>
+<p class="subtitle">So sánh quy trình trước và sau khi áp dụng AI — Giáo viên chủ nhiệm</p>
+
+<div class="container">
+
+  <!-- BEFORE -->
+  <div class="column before">
+    <div class="col-header">
+      <div>⏳ Before AI</div>
+      <div class="time-label">~60 phút / lớp</div>
+    </div>
+    <div class="col-body">
+
+      <div class="step normal">
+        <div class="step-num">Bước 1</div>
+        <div class="step-title">Lấy dữ liệu học tập</div>
+        <div class="step-desc">Điểm số, bài tập, chuyên cần từ nhiều nguồn</div>
+        <div class="step-time">⏱ 10 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step normal">
+        <div class="step-num">Bước 2</div>
+        <div class="step-title">Xem chuyên cần & ghi chú hành vi</div>
+        <div class="step-desc">Đọc lại sổ ghi chép thủ công</div>
+        <div class="step-time">⏱ 10 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step normal">
+        <div class="step-num">Bước 3</div>
+        <div class="step-title">Xác định học sinh cần chú ý</div>
+        <div class="step-desc">Lọc và ưu tiên thủ công</div>
+        <div class="step-time">⏱ 10 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step bottleneck">
+        <div class="step-num">Bước 4 <span class="badge badge-bottleneck">🔴 Bottleneck</span></div>
+        <div class="step-title">Viết nhận xét cá nhân hóa</div>
+        <div class="step-desc">Tự biến dữ liệu rời rạc thành câu chữ cho từng học sinh — hoàn toàn thủ công</div>
+        <div class="step-time">⏱ 20 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step normal">
+        <div class="step-num">Bước 5</div>
+        <div class="step-title">Rà lại nội dung & format</div>
+        <div class="step-time">⏱ 5 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step normal">
+        <div class="step-num">Bước 6</div>
+        <div class="step-title">Gửi báo cáo cho phụ huynh</div>
+        <div class="step-desc">Sổ liên lạc / app / tin nhắn</div>
+        <div class="step-time">⏱ 5 phút</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="column after">
+    <div class="col-header">
+      <div>✅ After AI</div>
+      <div class="time-label">~20 phút / lớp</div>
+    </div>
+    <div class="col-body">
+
+      <div class="step rule-step">
+        <div class="step-num">Bước 1 <span class="badge badge-rule">📋 Rule / Process</span></div>
+        <div class="step-title">Gom dữ liệu vào form/template chuẩn</div>
+        <div class="step-desc">Cấu trúc dữ liệu đầu vào thống nhất, dễ xử lý</div>
+        <div class="step-time">⏱ 3 phút</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step ai-step">
+        <div class="step-num">Bước 2 <span class="badge badge-ai">🤖 AI</span></div>
+        <div class="step-title">AI tóm tắt điểm mạnh / yếu / xu hướng</div>
+        <div class="step-desc">Phân tích tự động, highlight học sinh cần chú ý</div>
+        <div class="step-time">⏱ 2 phút — tự động</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step ai-step">
+        <div class="step-num">Bước 3 <span class="badge badge-ai">🤖 AI</span></div>
+        <div class="step-title">AI draft nhận xét cá nhân hóa</div>
+        <div class="step-desc">Tự động sinh văn bản nhận xét phù hợp từng học sinh</div>
+        <div class="step-time">⏱ 5 phút — tự động</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step human-step">
+        <div class="step-num">Bước 4 <span class="badge badge-human">👤 Human in the Loop</span></div>
+        <div class="step-title">Giáo viên review & chỉnh sửa</div>
+        <div class="step-desc">Kiểm soát chất lượng, thêm sắc thái cá nhân nếu cần</div>
+        <div class="step-time">⏱ 8 phút — human boundary</div>
+      </div>
+      <div class="arrow">↓</div>
+
+      <div class="step human-step">
+        <div class="step-num">Bước 5 <span class="badge badge-human">👤 Human</span></div>
+        <div class="step-title">Giáo viên gửi báo cáo cho phụ huynh</div>
+        <div class="step-time">⏱ 2 phút</div>
+      </div>
+
+      <div class="fallback">
+        ⚠️ <strong>Fallback:</strong> Nếu AI draft không đạt yêu cầu → bỏ qua, viết lại theo template chuẩn như cũ.
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Summary Bar -->
+<div class="summary">
+  <div class="summary-item">
+    <div class="label">⏳ Before AI</div>
+    <div class="val red">60'</div>
+    <div class="sub">6 bước thủ công</div>
+  </div>
+  <div class="summary-sep">→</div>
+  <div class="summary-item">
+    <div class="label">✅ After AI</div>
+    <div class="val green">20'</div>
+    <div class="sub">5 bước, 2 tự động</div>
+  </div>
+  <div class="summary-sep">→</div>
+  <div class="summary-item">
+    <div class="label">🚀 Tiết kiệm</div>
+    <div class="val blue">~67%</div>
+    <div class="sub">thời gian / lớp</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#805ad5"></div> Rule / Process — quy trình chuẩn hóa</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#48bb78"></div> AI tự động xử lý</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#63b3ed"></div> Human in the Loop — giáo viên kiểm soát</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e53e3e"></div> Bottleneck — điểm nghẽn chính</div>
+</div>
+
+</body>
+</html>
