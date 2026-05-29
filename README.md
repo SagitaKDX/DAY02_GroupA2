@@ -1,112 +1,111 @@
-# Day 02 Lab — Tìm Đúng Bài Toán Cho AI
+# Ví dụ bản nộp — Weekly Report trước và sau AI
 
-> Từ vấn đề thật quanh mình → workflow rõ → Problem Statement đủ chặt → chọn Rule / Workflow / Agent → quyết định Go / Not Yet / No-Go.
+> Ví dụ này cho thấy một bài nộp Day 02 hoàn chỉnh trông như thế nào. Không copy nội dung ví dụ; hãy học cách đi từ problem scan → workflow → research → Problem Statement → Rule / Workflow / Agent → quyết định cuối.
 
-## Tài liệu trong folder này
+Case ví dụ: **Tổng hợp weekly report**
 
-Folder này chỉ giữ các file cần thiết:
+Nhân vật ví dụ: Minh, Junior Product Manager tại một công ty SaaS khoảng 50 người. Mỗi tuần Minh phải tổng hợp số liệu từ Jira, Google Sheets và Slack để viết báo cáo tuần cho Engineering Manager và CEO.
 
-| File | Dùng để làm gì |
-|---|---|
-| `01-worksheet.md` | File hướng dẫn chính cho toàn bộ lab 4 tiếng. Bộ gợi ý, hướng dẫn công cụ, prompt và checklist tự kiểm đã được tích hợp trực tiếp vào từng phase. |
-| `02-deliverable-example.md` | Ví dụ bài nộp hoàn chỉnh để học viên nhìn được output cuối cùng trông như thế nào. |
+## Vì sao đây là ví dụ tốt?
 
-## Cấu trúc repo nộp bài
-
-Mỗi học viên nộp **một repo cá nhân**:
-
-```text
-Day02-MãHọcViên-HọVàTên/
-├── README.md
-├── 01-individual-problem-scan/
-├── 02-group-problem-statement/
-└── 03-individual-reflection/
-```
-
-Trong đó:
-
-- `01-individual-problem-scan/`: bài cá nhân, gồm scan 5+ problems, top 3 Problem Cards, draft workflow trước/sau.
-- `02-group-problem-statement/`: **bản nộp nhóm**. Nhóm 3-4 người làm chung một bản gồm nhật ký hội tụ, kiểm chứng/research, Problem Statement, Rule / Workflow / Agent, quyết định cuối, workflow trước/sau. Mỗi học viên copy bản cuối vào repo cá nhân của mình.
-- `03-individual-reflection/`: reflection cá nhân về AI, vai trò trong nhóm, và bài học sau lab.
-
-Nếu có file phụ như ảnh workflow, Mermaid, survey screenshot, research notes, đặt cùng prefix với phần liên quan:
-
-```text
-01-individual-problem-scan-workflow-card-1.png
-02-group-problem-statement-workflow.pdf
-02-group-problem-statement-research-notes.md
-```
-
-## Đọc file nào để làm gì?
-
-1. Mở `02-deliverable-example.md` trước để nhìn một bản nộp tốt trông như thế nào.
-2. Làm theo `01-worksheet.md` từ Phase 1 đến Phase 7. Worksheet là hướng dẫn suy nghĩ theo từng bước, không chỉ là form để điền.
-3. Khi nộp, repo cá nhân cần có đủ 3 phần: problem scan cá nhân, bản nộp nhóm, reflection cá nhân.
-
-## Tiêu chí đánh giá (100 điểm)
-
-Điểm của mỗi học viên gồm **điểm nhóm 60 điểm** và **điểm cá nhân 40 điểm**. Điểm nhóm là điểm cho bản nộp nhóm; mỗi học viên vẫn copy bản cuối vào repo cá nhân của mình. Bài làm không cần chọn Agent mới được điểm cao. Điểm nằm ở việc nhóm hiểu đúng bài toán, lập luận rõ, biết vì sao nên hoặc không nên dùng AI.
-
-Ngoài 100 điểm chính, học viên có thể có **tối đa +10 điểm bonus**.
-
-### A. Điểm nhóm — 60 điểm
-
-| Thành phần | Điểm | Cần thể hiện rõ |
-|---|---:|---|
-| Workflow trước/sau | 15 | Vẽ được workflow hiện tại và workflow sau tối ưu. Nhìn ra bước nghẽn, ai làm bước đó, mất bao lâu, bàn giao qua ai, AI hoặc tự động hóa nằm ở bước nào. |
-| Problem Statement + metric + boundary | 20 | Problem Statement có người gặp vấn đề, workflow, điểm nghẽn, tác động, success metric và boundary. Metric có hiện trạng ban đầu, mục tiêu sau cải thiện và cách đo, không chỉ viết "nhanh hơn" hoặc "tốt hơn". Boundary nói rõ phạm vi làm và không làm. |
-| Độ phù hợp với AI + phương án thay thế | 15 | So sánh được No AI / Rule / Workflow / Agent. Giải thích vì sao chọn mức đó, vì sao không chọn mức còn lại, AI được phép làm gì, phần nào cần người kiểm tra. |
-| Chất lượng quyết định | 10 | Quyết định Go / Not Yet / No-Go có lý do dựa trên bằng chứng, research hoặc giả định được ghi rõ. Không quyết định chỉ vì "muốn làm AI". |
-
-### B. Điểm cá nhân — 40 điểm
-
-| Thành phần | Điểm | Cần thể hiện rõ |
-|---|---:|---|
-| Scan problem + top 3 Problem Cards | 12 | Scan ít nhất 5 problems từ trải nghiệm thật, dùng nhiều lăng kính, có người gặp vấn đề và dấu hiệu thật. Top 3 Problem Cards đủ rõ để pitch với nhóm. |
-| Tham gia pitch + challenge | 12 | Pitch vấn đề của mình ngắn gọn, rõ người gặp vấn đề / workflow / điểm nghẽn. Khi nghe bạn khác, có đặt câu hỏi hoặc challenge đúng trọng tâm để giúp nhóm chọn bài tốt hơn. |
-| Reflection cá nhân | 10 | Ghi trung thực AI đã hỗ trợ gì, sai/hời hợt ở đâu, mình đã sửa gì bằng nhận định của bản thân. Reflection có nói rõ vai trò, đóng góp của mình trong nhóm, điều học được và nếu làm lại sẽ đổi gì. |
-| Kiểm tra hiểu bài cá nhân | 6 | Tự giải thích được mạch problem → workflow → metric → boundary → độ phù hợp với AI. Nếu được hỏi nhanh, trả lời được vì sao nhóm chọn Rule / Workflow / Agent và Go / Not Yet / No-Go. |
-
-### C. Bonus — tối đa +10 điểm
-
-| Phần bonus | Tối đa | Khi nào được cộng |
-|---|---:|---|
-| Scan rộng hơn yêu cầu | +3 | Có 8-10+ problems cụ thể, đa dạng lăng kính, không phải list dài nhưng chung chung. |
-| Tương tác tích cực | +3 | Trả lời câu hỏi thảo luận, gửi bài tập nhanh lên Discord, đặt câu hỏi tốt, hoặc challenge giúp bạn/nhóm làm rõ bài toán hơn. |
-| Kiểm chứng / research vượt yêu cầu | +4 | Có phỏng vấn nhanh, survey nhỏ, log thật, nguồn đáng tin cậy, hoặc kiểm chứng giúp nhóm sửa lại problem, metric hoặc quyết định cuối. |
-
-### D. Mức xếp loại
-
-| Mức | Điểm | Ý nghĩa |
-|---|---:|---|
-| Không pass | < 50 | Bài còn solution-first, chưa nắm được problem, workflow, metric hoặc độ phù hợp với AI. |
-| Vừa đủ pass | 50-64 | Có đủ phần cơ bản nhưng nhiều chỗ còn mơ hồ, metric hoặc boundary chưa chắc. |
-| Hiểu khá | 65-79 | Làm được đa số yêu cầu, logic tương đối rõ, còn thiếu bằng chứng hoặc so sánh phương án thay thế chưa sâu. |
-| Hiểu đầy đủ | 80-89 | Workflow, Problem Statement, độ phù hợp với AI và quyết định cuối nhất quán; metric và boundary rõ. |
-| Rất tốt | 90-100 | Bài có bằng chứng tốt, lập luận chặt, biết giới hạn của AI, reflection cá nhân sâu và trung thực. |
-
-## Flow lab 4 tiếng
-
-```text
-Phase 0  Worked Example                  15'
-Phase 1  Individual Scan                 25'
-Phase 2  Top 3 Problem Cards             35'
-         Break                            10'
-Phase 3  Group Convergence               30'
-Phase 4  Validation + Research            30'
-Phase 5  Workflow + Problem Statement     45'
-         Break                            10'
-Phase 6  Rule/Workflow/Agent + Decision   25'
-Phase 7  Individual Reflection            15'
-```
-
-## Điều quan trọng nhất
-
-- Nhóm **không chọn Problem Statement ngay**. Nhóm chọn một **candidate problem** để đào sâu.
-- Problem Statement chỉ được viết sau khi đã validate, research, vẽ workflow và làm metric rõ hơn.
-- Rule không kém Agent. Nếu Rule hoặc Workflow giải đúng bài toán với ít rủi ro hơn, đó là lựa chọn tốt.
-- AI chỉ hỗ trợ tư duy. Người học vẫn phải tự kiểm nguồn, tự chốt lập luận, tự chịu trách nhiệm với quyết định.
+- Có actor cụ thể.
+- Có workflow lặp lại hằng tuần.
+- Có bottleneck rõ.
+- Có metric thời gian.
+- Có thể so sánh Rule / Workflow / Agent.
+- Có thể vẽ before/after workflow.
 
 ---
 
-*Day 02 Lab v2 — Batch 02*
+# 01 — Individual Problem Scan
+
+## Scan rộng
+
+
+| # | Lăng kính | Problem quan sát được | Ai đang đau? | Dấu hiệu thật |
+|---|---|---|---|---|
+| 1 | Lặp lại, tốn thời gian | phải sắp xếp thời gian và check mail để check deadline vào mỗi buổi sáng, quản lý và đặt các báo hẹn hoặc nhắc nhở cho các công việc | Mọi người | Mất khoảng 30 - 45 phút mỗi ngày |
+| 2 | Lặp lại, tốn thời gian | Kiểm tra tiếng độ của từng bản kanban của từng sinh viên khi đang trong final project | Giảng Viên | Lặp lại mỗi tuần |
+| 3 | Tốn thời gian | Thống kê các thông báo, check các case của học sinh, check status của các khoảng thu của từng học sinh | Giáo Viên | 15 phút/bản |
+| 4 | Tốn thời gian | Kiểm tra tiến độ của từng sprint, tìm kiếm lại code cũ, các bản documentation cũ khi ở trong github khi phải fix bug hoặc tìm kiếm giải pháp | PM, team member | 30 phút/lần |
+| 5 | AI có thể tốt hơn | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo| Sale| Task nhiều nhưng việc đọc và kiểm tra từng comment và phải tự thống kê lại quá tốn thời gian|
+| 6 | AI có thể tốt hơn | Tìm kiếm lại các bài DSA tương đồng, trong DSA có thể cùng một bài nhưng được revise lại trên một web khác, hoặc trong thi cần tìm lại các đoạn code để cho cheat sheet | Cả team | 20-25 phút/lần tìm |
+| 7 | AI có thể làm tốt hơn | Mỗi lần code xong một function mà muốn test lại thuật toán thì thường phải viết lại test script, liệu có cách nào để có một extension dùng trực tiếp trong IDE để có thể (đoán được input , chạy thử function như leetcode và evaluate (auto viết code sinh test + thêm user để ))| Cả team | 20-25 phút/lần tìm |
+
+## Top 3
+
+| Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
+|---|---|---|---|
+| 1 | Tổng hợp và sắp xếp thời gian | Workflow rõ, mất nhiều thời gian, có metric tốt về phần TSC(Task success  rate), metrics của voice | Thế nào là một sản phẩm có UX đủ tốt và có security đủ tốt |
+| 2 | Tìm kiếm lại các bài DSA tương đồng scope to hơn là tìm các code được note lại | Có pain thật, AI có thể giúp đọc/tóm tắt tổng hợp và dễ dàng lưu lại , truy xuất | Làm sao để hiểu được cấu trúc search code tốt hơn (mỗi loại code có syntax khác nhau) |
+| 3 | Kiểm tra đánh giá các đơn hàng mới, ví dụ 4 sao tại sao , 3 sao tại sao, tổng hợp lại và báo cáo | Nhiều người đau, impact rộng | Không còn điều chưa chắc(không có nổĩ lo về risk ngoài ra vì đây dạng như gọi LLM và đã test trên tập dữ liệu trước đó rồi, ngoài ra không sợ vấn đề về spam về chính sách siết chặt của các sàng) |
+## Problem Card #3 — Sentiment Analysis & Review Report
+
+**Problem 1 câu:**  
+Nhân viên Quality Analytics (QA) mất quá nhiều thời gian (nửa ngày) để đọc thủ công, gán nhãn hàng ngàn review 1-4 sao, khiến báo cáo chất lượng gửi Store Manager bị chậm, dễ sai sót do cảm tính và khó scale khi lượng đơn hàng tăng vọt.
+
+**Actor:**  
+*   **Doer:** Quality Analytics (QA) - người tổng hợp và phân tích.
+*   **Stakeholder:** Store Manager - người đọc report để ra quyết định cải thiện vận hành.
+
+**Thời điểm / bối cảnh:**  
+Cuối mỗi tuần hoặc sau các chiến dịch Mega Sale (khi lượng review tăng đột biến).
+
+**Điều còn chưa chắc (Cập nhật lại):**  
+*   Làm sao để đảm bảo LLM không "bịa" (hallucinate) ra lý do phàn nàn không có thật?
+*   Độ chính xác (Accuracy) của LLM khi gặp từ lóng, viết tắt, hoặc comment mang tính mỉa mai (sarcasm) của khách hàng.
+*   Store Manager có thực sự tin tưởng vào insight do AI tổng hợp để ra quyết định thay đổi vận hành (ví dụ: đổi đối tác giao hàng, phạt nhân viên đóng gói) hay không?
+
+**Current workflow:**
+1. Export dữ liệu đánh giá từ các sàn TMĐT về Excel.
+2. Filter các đánh giá từ 1 đến 4 sao.
+3. Đọc thủ công từng comment để phân tích.
+4. Gán nhãn thủ công (Tagging) từng dòng trên Excel.
+5. Thống kê số liệu, vẽ biểu đồ.
+6. Viết narrative báo cáo tổng hợp.
+7. Gửi báo cáo cho Store Manager.
+
+**Bottleneck:**  
+Bước 3 & 4 — Đọc thủ công và gán nhãn tốn nhiều sức lực nhất, giới hạn khối lượng data có thể xử lý và phụ thuộc vào cảm tính của người đọc.
+
+**Impact:**  
+Mất 3-4 tiếng/tuần cho 1 bản báo cáo. Khi có Mega Sale, QA bị "ngập" trong data dẫn đến báo cáo trễ, Store Manager không có insight kịp thời.
+
+**Success metric:**  
+*   Giảm thời gian xử lý data và làm báo cáo từ 4 tiếng xuống dưới 45 phút.
+*   Độ chính xác khi tự động gán nhãn của AI đạt trên 85% so với human.
+
+**Non-AI alternative:**  
+Chỉ dùng Rule-based (tìm kiếm keyword) + Dashboard Excel. *Hạn chế:* Bỏ sót nhiều context phức tạp, không xử lý được lỗi chính tả, không draft được narrative.
+
+**AI hypothesis:**  
+Sử dụng **LLM Workflow kết hợp Rule-based**. Rule-based lọc rác. LLM trích xuất insight và draft narrative. QA đóng vai trò Reviewer (Human-in-the-loop).
+
+**Quick gut:**  
+LLM Workflow / Data Pipeline.
+
+### Workflow Comparison
+
+```mermaid
+graph TD
+    subgraph Current State - 240 phút
+        A[1. Export review] --> B[2. Filter 1-4 sao]
+        B --> C[3. Đọc thủ công hàng ngàn comment]:::bottleneck
+        C --> D[4. Gán nhãn Excel thủ công]:::bottleneck
+        D --> E[5. Vẽ biểu đồ & thống kê]
+        E --> F[6. Tự viết narrative]
+        F --> G[7. Gửi Store Manager]
+    end
+
+    subgraph Future State - 45 phút
+        H[1. Data Ingestion/Export] --> I[2. Rule-based: Lọc Spam/Ngắn]
+        I --> J[3. LLM: Auto-Tagging & Extract Aspect]:::ai
+        J --> K[4. Hệ thống: Aggregate Data]
+        K --> L[5. LLM: Draft Narrative Report]:::ai
+        L --> M[6. QA Review & Edit]:::human
+        M --> N[7. Gửi Store Manager]
+    end
+
+    classDef bottleneck fill:#ffcccc,stroke:#ff0000,stroke-width:2px;
+    classDef ai fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
+    classDef human fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
