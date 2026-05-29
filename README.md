@@ -1,21 +1,3 @@
-# Ví dụ bản nộp — Weekly Report trước và sau AI
-
-> Ví dụ này cho thấy một bài nộp Day 02 hoàn chỉnh trông như thế nào. Không copy nội dung ví dụ; hãy học cách đi từ problem scan → workflow → research → Problem Statement → Rule / Workflow / Agent → quyết định cuối.
-
-Case ví dụ: **Tổng hợp weekly report**
-
-Nhân vật ví dụ: Minh, Junior Product Manager tại một công ty SaaS khoảng 50 người. Mỗi tuần Minh phải tổng hợp số liệu từ Jira, Google Sheets và Slack để viết báo cáo tuần cho Engineering Manager và CEO.
-
-## Vì sao đây là ví dụ tốt?
-
-- Có actor cụ thể.
-- Có workflow lặp lại hằng tuần.
-- Có bottleneck rõ.
-- Có metric thời gian.
-- Có thể so sánh Rule / Workflow / Agent.
-- Có thể vẽ before/after workflow.
-
----
 
 # 01 — Individual Problem Scan
 
